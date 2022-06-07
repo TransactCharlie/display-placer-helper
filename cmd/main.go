@@ -57,7 +57,7 @@ func main() {
 		displayMap[d.PersistentScreenID] = d
 	}
 
-	displaysAreCorrect := true
+	modifyDisplays := myDisplays[:0]
 	for _, d := range myDisplays {
 		compareDisplay, found := displayMap[d.PersistentScreenID]
 
@@ -67,16 +67,12 @@ func main() {
 		}
 
 		if compareDisplay != d {
-			displaysAreCorrect = false
-			break
+			modifyDisplays = append(modifyDisplays, compareDisplay)
 		}
 	}
 
-	if !displaysAreCorrect {
-		err := displayplacer.ApplyDisplays(myDisplays)
-		if err != nil {
-			panic(err)
-		}
+	err = displayplacer.ApplyDisplays(modifyDisplays)
+	if err != nil {
+		panic(err)
 	}
-
 }

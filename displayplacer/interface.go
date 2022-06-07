@@ -15,5 +15,8 @@ func ListDisplays() ([]Display, error) {
 
 // ApplyDisplays asks displayplacer to set displays.
 func ApplyDisplays(displays []Display) error {
+	if len(displays) == 0 {
+		return nil
+	}
 	return execDisplayPlacerSetDisplays(displays)
 }
