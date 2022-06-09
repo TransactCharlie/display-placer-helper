@@ -32,7 +32,7 @@ var myDisplays = []displayplacer.Display{
 		Hertz:              "59",
 		ColorDepth:         "8",
 		Scaling:            "off",
-		Origin:             "(180,-1440)",
+		Origin:             "(190,-1440)",
 		Rotation:           "0",
 	},
 	{
@@ -42,7 +42,7 @@ var myDisplays = []displayplacer.Display{
 		Hertz:              "59",
 		ColorDepth:         "8",
 		Scaling:            "off",
-		Origin:             "(-2380,-1440)",
+		Origin:             "(-2370,-1440)",
 		Rotation:           "0",
 	},
 	{

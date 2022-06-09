@@ -1,6 +1,8 @@
 package main
 
-import "github.com/transactcharlie/display-placer-helper/displayplacer"
+import (
+	"github.com/transactcharlie/display-placer-helper/displayplacer"
+)
 
 var myDisplays = []displayplacer.Display{
 	{
@@ -20,7 +22,7 @@ var myDisplays = []displayplacer.Display{
 		Hertz:              "59",
 		ColorDepth:         "8",
 		Scaling:            "off",
-		Origin:             "(180,-1440)",
+		Origin:             "(62,-1440)",
 		Rotation:           "0",
 	},
 	{
@@ -30,7 +32,7 @@ var myDisplays = []displayplacer.Display{
 		Hertz:              "59",
 		ColorDepth:         "8",
 		Scaling:            "off",
-		Origin:             "(-2380,-1440)",
+		Origin:             "(-2498,-1440)",
 		Rotation:           "0",
 	},
 	{
@@ -57,7 +59,9 @@ func main() {
 		displayMap[d.PersistentScreenID] = d
 	}
 
-	modifyDisplays := myDisplays[:0]
+	var attachedDisplays []displayplacer.Display
+	requireChange := false
+
 	for _, d := range myDisplays {
 		compareDisplay, found := displayMap[d.PersistentScreenID]
 
@@ -65,14 +69,17 @@ func main() {
 		if !found {
 			continue
 		}
+		attachedDisplays = append(attachedDisplays, compareDisplay)
 
 		if compareDisplay != d {
-			modifyDisplays = append(modifyDisplays, compareDisplay)
+			requireChange = true
 		}
 	}
 
-	err = displayplacer.ApplyDisplays(modifyDisplays)
-	if err != nil {
-		panic(err)
+	if requireChange {
+		err = displayplacer.ApplyDisplays(attachedDisplays)
+		if err != nil {
+			panic(err)
+		}
 	}
 }
