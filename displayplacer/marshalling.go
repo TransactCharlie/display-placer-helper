@@ -51,8 +51,7 @@ func DisplayToDisplayPlacerString(d Display) string {
 			d.ColorDepth,
 			d.Scaling,
 			d.Origin,
-			d.Rotation,
-		)
+			d.Rotation)
 	default:
 		return fmt.Sprintf("id:%s res:%s hz:%s color_depth:%s scaling:%s origin:%s degree:%s",
 			d.PersistentScreenID,
@@ -61,7 +60,6 @@ func DisplayToDisplayPlacerString(d Display) string {
 			d.ColorDepth,
 			d.Scaling,
 			d.Origin,
-			d.Rotation,
-		)
+			d.Rotation)
 	}
 }

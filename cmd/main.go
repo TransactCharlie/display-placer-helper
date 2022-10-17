@@ -16,23 +16,23 @@ var myDisplays = []displayplacer.Display{
 		Rotation:           "0",
 	},
 	{
-		PersistentScreenID: "C3C2CD03-9FB9-45BE-DFBF-9F5A5CA823FF",
-		Type:               "24 inch external screen",
-		Resolution:         "2560x1440",
-		Hertz:              "59",
-		ColorDepth:         "8",
-		Scaling:            "off",
-		Origin:             "(62,-1440)",
-		Rotation:           "0",
-	},
-	{
 		PersistentScreenID: "0BCE8D4D-DF1E-7F20-CBDD-064991103F22",
 		Type:               "24 inch external screen",
 		Resolution:         "2560x1440",
 		Hertz:              "59",
 		ColorDepth:         "8",
 		Scaling:            "off",
-		Origin:             "(-2498,-1440)",
+		Origin:             "(-1769,-1440)",
+		Rotation:           "0",
+	},
+	{
+		PersistentScreenID: "C3C2CD03-9FB9-45BE-DFBF-9F5A5CA823FF",
+		Type:               "24 inch external screen",
+		Resolution:         "2560x1440",
+		Hertz:              "59",
+		ColorDepth:         "8",
+		Scaling:            "off",
+		Origin:             "(791,-1440)",
 		Rotation:           "0",
 	},
 	{
@@ -69,7 +69,7 @@ func main() {
 		if !found {
 			continue
 		}
-		attachedDisplays = append(attachedDisplays, compareDisplay)
+		attachedDisplays = append(attachedDisplays, d)
 
 		if compareDisplay != d {
 			requireChange = true

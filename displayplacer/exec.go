@@ -3,6 +3,7 @@ package displayplacer
 import (
 	"bufio"
 	"fmt"
+	"os"
 	"os/exec"
 )
 
@@ -11,13 +12,17 @@ func execDisplayPlacerSetDisplays(displays []Display) error {
 	for _, d := range displays {
 		args = append(args, DisplayToDisplayPlacerString(d))
 	}
-	cmd := exec.Command("displayplacer", args...)
 
-	if err := cmd.Start(); err != nil {
+	cmd := exec.Command("displayplacer", args...)
+	cmd.Env = os.Environ()
+
+	stdout, err := cmd.CombinedOutput()
+	if err != nil {
+		fmt.Printf(string(stdout))
 		return err
 	}
+	return nil
 
-	return cmd.Wait()
 }
 
 // execDisplayPlacer
